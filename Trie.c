@@ -71,7 +71,7 @@ void print_result(node *pNode, char *word, int flag) {
         size_t len = strlen(word);
         word[len] = pNode->letter;
         if (pNode->count) {
-            printf("%s   %ld\n", word, pNode->count);
+            printf("%s\t%ld\n", word, pNode->count);
         }
         int j;
         for (int i = 0; i <26; ++i) {
