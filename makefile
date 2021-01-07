@@ -3,9 +3,9 @@ FLAGS = -Wall
 LD_FLAGS="-Wl,-R."
 .PHONY: all clean mymaths mymathd
 
-all:frecuency
+all:frequency
 
-frecuency:main.o Trie.o
+frequency:main.o Trie.o
 	$(CC) $(FLAGS) -o $@ $^
 main.o:main.c
 	$(CC) $(FLAGS) -o $@ -c $^
