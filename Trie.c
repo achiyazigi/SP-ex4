@@ -14,6 +14,9 @@
 //allocate memory for a new node
 node *new_node(char letter, long unsigned int count, node *children[NUM_LETTERS]){
     node *new_n = (node*)calloc(1, sizeof(node));
+    if(!new_n){
+        return NULL;
+    }
     new_n->letter = letter;
     new_n->count = count;
     if(children)
@@ -46,6 +49,10 @@ node *add_char(Trie *t){
     cur = temp;
     while(c != ' ' && c!= '\n' && c!= EOF){
         cur->children[c-'a'] = new_node(c,0,NULL);
+        if(!cur->children[c-'a']){
+            kill(t);
+            return NULL;
+        }
         i++;
         cur = cur->children[c-'a'];
         c = next_char();
@@ -92,6 +99,10 @@ void print_result(node *pNode, char *word, int flag) {
 //print the data from trie t
 void print_results(Trie *t, int flag){
     char *word = (char*)calloc(1, t->longest_word * sizeof(char)+2);
+    if(!word){
+        kill(t);
+        exit(-1);
+    }
     print_result(t->root, word, flag);
     free(word);
 }
