@@ -12,4 +12,4 @@ main.o:main.c
 Trie.o:Trie.c
 	$(CC) $(FLAGS) -o $@ -c $^
 clean:
-	rm *.o frecuency
+	rm *.o frequency
